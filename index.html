@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="em">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css" type="text/css">
+        <title>Personnage Imminentes</title>
+    </head>
+    <body>
+        <h1>Personnages historiques</h1>
+        <h2>Qui est ce personnage:  </h2>
+        <div class="image-container">
+            <img src="img/temp.png" alt="Don't know what that is">
+            <form autocomplete="off">
+                <fieldset>
+                    <label for="name">Son nom: <input required type="text" id="name" placeholder="Jean drapeaus"></label>
+                </fieldset>
+                 <fieldset>
+                    <label for="pays">Son Pays: <input required type="text" id="pays"></label>
+                </fieldset>
+                
+                <!--
+                <fieldset>
+                    <label for="actor">Son type d'acteur: <input required type="text" id="actor"></label>
+                </fieldset> -->
+                <input type="submit" value="Soumettre" >
+            </form>
+        </div>  
+        <script src="db.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="em">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../styles.css" type="text/css">
+        <title>Personnage Imminentes</title>
+    </head>
+
+    <script>
+        let bool = false;
+        function changeText(name, country){
+            bool ^= true;
+            const nameText = document.querySelector("#name");
+            const countryText = document.querySelector("#pays");
+            if (bool){
+                nameText.setAttribute("placeholder", name);
+                countryText.setAttribute("placeholder", country);
+            }else {
+                nameText.setAttribute("placeholder", "name");
+                countryText.setAttribute("placeholder", "country");
+            }
+        }
+    </script>
+    <body>
+        <h1>Personnages historiques</h1>
+        <h2>Qui est ce personnage:  </h2>
+        <div class="image-container">
+            <img src="<%=person.url%>" alt="Personnage">
+            <form autocomplete="off" method="get" id ="form" action="/process_get">
+                <fieldset>  
+                    <label for="name">Son nom: <input autocomplete="off" required type="text" id="name"  name="name"  >
+                        <%if (nameFound == 1){ %>
+                            Bravo Réussi C'était effectivement <%=person.name%>
+                        <% } else if (nameFound == 0){ %>
+                            Malheuresement ce n'était pas <%=name%> Recommence
+                        <% } %>
+                        </label>
+                </fieldset>
+                 <fieldset>
+                    <label for="pays">Son Pays: <input autocomplete="off" required type="text" id="pays"  name="country">
+                        <%if (countryFound == 1) { %>
+                            Bravo Réussi C'était effectivement <%=person.country%>
+                        <% } else if (countryFound == 0){ %>
+                            Malheuresement ce n'était pas <%=country%> Recommence
+                        <% } %>
+                    </label>
+                </fieldset>
+                
+                <!--
+                <fieldset>
+                    <label for="actor">Son type d'acteur: <input required type="text" id="actor"></label>
+                </fieldset> -->
+                <input type="submit" value="Soumettre" >
+                    <% if (countryFound == 0 || nameFound == 0) {%>
+                <label for= "cheat">Cheat mode: <input onclick="changeText('<%=person.name%>', '<%=person.country%>'); return false;" id="cheat" type="button" value="cheat mode" ></label>
+                <% } %>
+               </form>
+        </div>  
+        <%if (countryFound == 1 && nameFound == 1){ %>
+            <form>
+                <button id="retry" type="submit" formaction="/" formmethod="get">Réessayer un nouveau personnage</button>
+            </form>    
+            <% } %>
+    </body>
+</html>
